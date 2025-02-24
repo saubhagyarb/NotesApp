@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Notes App</string>
+    <string name="notes">Notes</string>
+    <string name="search_notes">Search notes</string>
+    <string name="your_notes">Your notes</string>
+    <string name="add_button">Add button</string>
+    <string name="back_button">Back button</string>
+    <string name="delete">Delete</string>
+    <string name="Book_review">Book Review : The Design of Everyday Things by Don Norman</string>
+    <string name="save">save</string>
+    <string name="note">Note</string>
+    <string name="title">Title</string>
+    <string name="search">search</string>
+    <string name="edit_button">Edit button</string>
+    <string name="the_design_of_everyday">The Design of Everyday Things is required reading for anyone who is interested in the user experience. I personally like to reread it every year or two.</string>
+    <string name="notes_you_add_appear_here">Notes you add appear here</string>
+    <string name="empty_state_icon">Empty state icon</string>
+</resources>
