@@ -1,9 +1,16 @@
 package com.example.notesapp
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +18,8 @@ import com.example.notesapp.data.Note
 import com.example.notesapp.data.NoteViewModel
 import com.example.notesapp.data.ViewModelFactory
 import com.google.android.material.textfield.TextInputEditText
+import java.io.File
+import java.io.FileOutputStream
 
 class AddNote : AppCompatActivity() {
 
@@ -19,6 +28,22 @@ class AddNote : AppCompatActivity() {
     private lateinit var noteInputEditText: TextInputEditText
     private lateinit var backButton: ImageButton
     private lateinit var saveButton: ImageButton
+    private lateinit var addImageButton: ImageButton
+    private lateinit var removeImageButton: ImageButton
+    private lateinit var selectedImageView: ImageView
+
+
+    private var selectedImageUri: Uri? = null
+
+    private val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+        if (uri != null) {
+            Log.d("PhotoPicker", "Selected URI: $uri")
+            selectedImageUri = uri
+            displaySelectedImage()
+        } else {
+            Log.d("PhotoPicker", "No media selected")
+        }
+    }
 
     private val noteViewModel: NoteViewModel by viewModels {
         ViewModelFactory(application)
@@ -43,11 +68,16 @@ class AddNote : AppCompatActivity() {
         noteInputEditText = findViewById(R.id.noteInput)
         backButton = findViewById(R.id.backButton)
         saveButton = findViewById(R.id.saveButton)
+        addImageButton = findViewById(R.id.addImageButton)
+        selectedImageView = findViewById(R.id.selectedImageView)
+        removeImageButton = findViewById(R.id.removeImageButton)
     }
 
     private fun setupListeners() {
         saveButton.setOnClickListener { showSaveDialog() }
         backButton.setOnClickListener { finish() }
+        addImageButton.setOnClickListener { addImage() }
+        removeImageButton.setOnClickListener { removeImage() }
     }
 
     private fun loadNoteForEditing() {
@@ -56,9 +86,30 @@ class AddNote : AppCompatActivity() {
                 note?.let {
                     titleTextInputEditText.setText(it.title)
                     noteInputEditText.setText(it.content)
+
+                    if (!it.imageUri.isNullOrEmpty()) {
+                        selectedImageUri = Uri.parse(it.imageUri)
+                        displaySelectedImage()
+                    }
                 }
             }
         }
+    }
+
+    private fun displaySelectedImage() {
+        selectedImageUri?.let {
+            selectedImageView.setImageURI(it)
+           // selectedImageView.scaleType = ImageView.ScaleType.CENTER_CROP
+            selectedImageView.visibility = View.VISIBLE
+            removeImageButton.visibility = View.VISIBLE
+        }
+    }
+
+    private fun removeImage() {
+        selectedImageUri = null
+        selectedImageView.setImageURI(null)
+        selectedImageView.visibility = View.GONE
+        removeImageButton.visibility = View.GONE
     }
 
     private fun showSaveDialog() {
@@ -85,10 +136,13 @@ class AddNote : AppCompatActivity() {
     }
 
     private fun save(title: String, content: String) {
+        val imagePath = selectedImageUri?.let { saveImageToPrivateStorage(it) }
+
         val note = Note(
             id = if (noteId != -1) noteId else 0,
             title = title,
-            content = content
+            content = content,
+            imageUri = imagePath  // Store local path instead of content URI
         )
 
         if (noteId != -1) {
@@ -97,5 +151,26 @@ class AddNote : AppCompatActivity() {
             noteViewModel.insert(note)
         }
         finish()
+    }
+    private fun saveImageToPrivateStorage(uri: Uri): String? {
+        return try {
+            val inputStream = contentResolver.openInputStream(uri)
+            val file = File(filesDir, "images/${System.currentTimeMillis()}.jpg")
+            file.parentFile?.mkdirs()
+
+            inputStream?.use { input ->
+                FileOutputStream(file).use { output ->
+                    input.copyTo(output)
+                }
+            }
+            Uri.fromFile(file).toString()
+        } catch (e: Exception) {
+            Log.e("SaveImage", "Error saving image", e)
+            null
+        }
+    }
+
+    private fun addImage() {
+        pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
 }
