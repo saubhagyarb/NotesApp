@@ -62,8 +62,8 @@ class AddNote : AppCompatActivity() {
     }
 
     private fun showSaveDialog() {
-        val title = titleTextInputEditText.text.toString()
-        val content = noteInputEditText.text.toString()
+        val title = titleTextInputEditText.text.toString().trim()
+        val content = noteInputEditText.text.toString().trim()
 
         if (title.isEmpty() || content.isEmpty()) {
             Toast.makeText(mContext, "Please fill all fields", Toast.LENGTH_SHORT).show()
@@ -74,7 +74,7 @@ class AddNote : AppCompatActivity() {
             .setTitle("Save Note")
             .setMessage("Do you want to save this note?")
             .setPositiveButton("Yes") { dialog, _ ->
-                save()
+                save(title, content)
                 dialog.dismiss()
             }
             .setNegativeButton("No") { dialog, _ ->
@@ -84,26 +84,7 @@ class AddNote : AppCompatActivity() {
             .show()
     }
 
-    private fun showDeleteDialog() {
-        if (noteId != -1) {
-            AlertDialog.Builder(mContext)
-                .setTitle("Delete Note")
-                .setMessage("Are you sure you want to delete this note?")
-                .setPositiveButton("Yes") { dialog, _ ->
-                    dialog.dismiss()
-                }
-                .setNegativeButton("No") { dialog, _ ->
-                    dialog.dismiss()
-                }
-                .create()
-                .show()
-        }
-    }
-
-    private fun save() {
-        val title = titleTextInputEditText.text.toString()
-        val content = noteInputEditText.text.toString()
-
+    private fun save(title: String, content: String) {
         val note = Note(
             id = if (noteId != -1) noteId else 0,
             title = title,
@@ -117,6 +98,4 @@ class AddNote : AppCompatActivity() {
         }
         finish()
     }
-
-
 }

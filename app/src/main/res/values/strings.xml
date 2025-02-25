@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">My Notes App</string>
+    <string name="app_name">NotesApp</string>
     <string name="notes">Notes</string>
     <string name="search_notes">Search notes</string>
     <string name="your_notes">Your notes</string>
@@ -16,4 +16,5 @@
     <string name="the_design_of_everyday">The Design of Everyday Things is required reading for anyone who is interested in the user experience. I personally like to reread it every year or two.</string>
     <string name="notes_you_add_appear_here">Notes you add appear here</string>
     <string name="empty_state_icon">Empty state icon</string>
+    <string name="add_image">Add Image</string>
 </resources>
