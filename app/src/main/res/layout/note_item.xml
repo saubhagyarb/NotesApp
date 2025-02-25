@@ -18,19 +18,27 @@ android:layout_margin="6dp">
     <TextView
         android:id="@+id/title"
         android:text="@string/your_notes"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/md_theme_secondaryContainer"/>
+        android:textColor="@color/md_theme_secondaryContainer"
+        android:textColorLink="@color/md_theme_secondaryContainer"
+        android:maxLines="2"
+        android:autoLink="all"
+        />
 
     <TextView
         android:id="@+id/content"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:layout_marginTop="8dp"
-        android:textColor="@color/md_theme_secondaryContainer"/>
+        android:textColor="@color/md_theme_secondaryContainer"
+        android:textColorLink="@color/md_theme_secondaryContainer"
+        android:maxLines="4"
+        android:autoLink="all"
+        />
 
 </LinearLayout>
 </androidx.cardview.widget.CardView>
