@@ -68,6 +68,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleText"
+        android:clipToPadding="false"
+        android:paddingBottom="88dp"
         android:layout_marginTop="8dp"
         tools:listitem="@layout/note_item" />
 
@@ -80,6 +82,6 @@
         android:src="@drawable/add"
         app:backgroundTint="@color/md_theme_onBackground"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

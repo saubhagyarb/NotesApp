@@ -8,7 +8,8 @@ data class Note(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val title: String,
-    val content: String
+    val content: String,
+    val imageUri: String? = null
 ) {
     constructor() : this(0, "", "")
 }

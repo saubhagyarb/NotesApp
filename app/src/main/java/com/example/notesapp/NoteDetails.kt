@@ -1,11 +1,13 @@
 package com.example.notesapp
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.notesapp.data.Note
 import com.example.notesapp.data.NoteViewModel
@@ -15,6 +17,7 @@ class NoteDetails : AppCompatActivity() {
 
     private lateinit var titleText: TextView
     private lateinit var reviewText: TextView
+    private lateinit var noteImageView: ImageView
     private lateinit var backButton: ImageButton
     private lateinit var editButton: ImageButton
     private lateinit var deleteButton: ImageButton
@@ -22,6 +25,7 @@ class NoteDetails : AppCompatActivity() {
     private val noteViewModel: NoteViewModel by viewModels {
         ViewModelFactory(application)
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +39,7 @@ class NoteDetails : AppCompatActivity() {
     private fun init() {
         titleText = findViewById(R.id.titleText)
         reviewText = findViewById(R.id.reviewText)
+        noteImageView = findViewById(R.id.noteImageView)
         backButton = findViewById(R.id.backButton)
         editButton = findViewById(R.id.editButton)
         deleteButton = findViewById(R.id.deleteButton)
@@ -54,31 +59,40 @@ class NoteDetails : AppCompatActivity() {
         }
 
         deleteButton.setOnClickListener {
-            showDeleteDialog()
+            val noteId = intent.getIntExtra("note_id", -1)
+            if (noteId != -1) {
+                noteViewModel.delete(Note(id = noteId, title = "", content = ""))
+            }
+            finish()
         }
     }
 
-    private fun showDeleteDialog() {
-        AlertDialog.Builder(this)
-            .setTitle("Delete Note")
-            .setMessage("Are you sure you want to delete this note?")
-            .setPositiveButton("Yes") { dialog, _ ->
-                val noteId = intent.getIntExtra("note_id", -1)
-                if (noteId != -1) {
-                    noteViewModel.delete(Note(id = noteId, title = "", content = ""))
-                }
-                dialog.dismiss()
-                finish()
-            }
-            .setNegativeButton("No") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .create()
-            .show()
-    }
-
     private fun displayNoteDetails() {
-        titleText.text = intent.getStringExtra("note_title")
-        reviewText.text = intent.getStringExtra("note_content")
+        val noteId = intent.getIntExtra("note_id", -1)
+
+        if (noteId != -1) {
+            noteViewModel.getNoteById(noteId).observe(this) { note ->
+                note?.let {
+                    titleText.text = it.title
+                    reviewText.text = it.content
+//                    noteImageView.setImageURI(Uri.parse(it.imageUri))
+
+                    if (!it.imageUri.isNullOrEmpty()) {
+                        try {
+                            noteImageView.setImageURI(Uri.parse(it.imageUri))
+                            noteImageView.visibility = View.VISIBLE
+                        } catch (e: Exception) {
+                            noteImageView.visibility = View.GONE
+                        }
+                    } else {
+                        noteImageView.visibility = View.GONE
+                    }
+                }
+            }
+        } else {
+
+            titleText.text = intent.getStringExtra("note_title")
+            reviewText.text = intent.getStringExtra("note_content")
+        }
     }
 }

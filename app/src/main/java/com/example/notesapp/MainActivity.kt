@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var searchButton: ImageButton
     private lateinit var emptyStateLayout: LinearLayout
 
+
     private val noteViewModel: NoteViewModel by viewModels {
         ViewModelFactory(application)
     }
@@ -36,6 +37,16 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerView()
         setupListeners()
         observeNotes()
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            itemAnimator = SpringItemAnimator()
+
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    recyclerView.invalidateItemDecorations()
+                }
+            })
+        }
     }
 
     private fun init() {

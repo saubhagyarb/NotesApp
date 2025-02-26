@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:padding="20dp">
 
-
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="48dp"
@@ -18,7 +17,6 @@
         app:tint="@color/md_theme_onBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <ImageButton
         android:id="@+id/deleteButton"
@@ -31,7 +29,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <ImageButton
         android:id="@+id/editButton"
         android:layout_width="48dp"
@@ -43,7 +40,6 @@
         app:layout_constraintEnd_toStartOf="@id/deleteButton"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginEnd="8dp" />
-
 
     <TextView
         android:id="@+id/titleText"
@@ -58,7 +54,6 @@
         android:layout_marginTop="16dp"
         android:autoLink="all" />
 
-
     <TextView
         android:id="@+id/reviewText"
         android:layout_width="0dp"
@@ -70,5 +65,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
         android:autoLink="all" />
+
+    <ImageView
+        android:id="@+id/noteImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="TODO"
+        android:scaleType="centerInside"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/reviewText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

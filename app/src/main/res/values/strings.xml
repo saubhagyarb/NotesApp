@@ -17,4 +17,6 @@
     <string name="notes_you_add_appear_here">Notes you add appear here</string>
     <string name="empty_state_icon">Empty state icon</string>
     <string name="add_image">Add Image</string>
+    <string name="remove_image">Remove image</string>
+    <string name="selected_image">Selected image</string>
 </resources>
