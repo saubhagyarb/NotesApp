@@ -19,4 +19,6 @@
     <string name="add_image">Add Image</string>
     <string name="remove_image">Remove image</string>
     <string name="selected_image">Selected image</string>
+    <string name="the_content_of_the_note">The content of the note</string>
+    <string name="image_that_was_selected">Image that was selected</string>
 </resources>

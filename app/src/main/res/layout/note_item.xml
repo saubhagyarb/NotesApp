@@ -38,6 +38,7 @@ android:layout_margin="6dp">
         android:textColorLink="@color/md_theme_secondaryContainer"
         android:maxLines="4"
         android:autoLink="all"
+        android:text="@string/the_content_of_the_note"
         />
 
 </LinearLayout>

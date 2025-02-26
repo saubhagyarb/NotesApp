@@ -1,7 +1,6 @@
 package com.example.notesapp
 
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -99,7 +98,6 @@ class AddNote : AppCompatActivity() {
     private fun displaySelectedImage() {
         selectedImageUri?.let {
             selectedImageView.setImageURI(it)
-           // selectedImageView.scaleType = ImageView.ScaleType.CENTER_CROP
             selectedImageView.visibility = View.VISIBLE
             removeImageButton.visibility = View.VISIBLE
         }
@@ -142,7 +140,7 @@ class AddNote : AppCompatActivity() {
             id = if (noteId != -1) noteId else 0,
             title = title,
             content = content,
-            imageUri = imagePath  // Store local path instead of content URI
+            imageUri = imagePath
         )
 
         if (noteId != -1) {
