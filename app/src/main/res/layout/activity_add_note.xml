@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/add_note"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="20dp">
 
     <ImageButton
@@ -86,18 +90,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp" />
 
-    <ImageView
-        android:id="@+id/selectedImageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/selected_image"
-        android:scaleType="centerInside"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/addImageButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
     <ImageButton
         android:id="@+id/removeImageButton"
         android:layout_width="48dp"
@@ -106,9 +98,25 @@
         android:src="@drawable/close"
         android:contentDescription="@string/remove_image"
         app:tint="@color/md_theme_error"
-        app:layout_constraintTop_toTopOf="@id/selectedImageView"
-        app:layout_constraintEnd_toEndOf="@id/selectedImageView"
+        app:layout_constraintTop_toTopOf="@id/addImageButton"
+        app:layout_constraintStart_toEndOf="@id/addImageButton"
+        android:layout_marginStart="8dp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/selectedImageView"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:contentDescription="@string/selected_image"
+        android:scaleType="centerInside"
         android:visibility="gone"
-        />
+        app:layout_constraintTop_toBottomOf="@id/addImageButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
