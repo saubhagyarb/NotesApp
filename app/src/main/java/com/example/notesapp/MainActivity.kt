@@ -3,7 +3,6 @@ package com.example.notesapp
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.LinearLayout
@@ -64,7 +63,6 @@ class MainActivity : AppCompatActivity() {
                 putExtra("note_title", note.title)
                 putExtra("note_content", note.content)
                 putExtra("note_image_uri", note.imageUri)
-                Log.d("NoteDetails", "Image URI: ${note.imageUri}")
             }
             startActivity(intent)
         }

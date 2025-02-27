@@ -2,7 +2,6 @@ package com.example.notesapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -13,7 +12,6 @@ import androidx.core.net.toUri
 import com.example.notesapp.data.Note
 import com.example.notesapp.data.NoteViewModel
 import com.example.notesapp.data.ViewModelFactory
-import kotlin.math.log
 
 class NoteDetails : AppCompatActivity() {
 
@@ -88,16 +86,13 @@ class NoteDetails : AppCompatActivity() {
         reviewText.text = intent.getStringExtra("note_content")
 
         val imageUriString = intent.getStringExtra("note_image_uri")
-        Log.d("NoteDetails", "Image URI: $imageUriString")
 
         if (!imageUriString.isNullOrEmpty()) {
             val imageUri = imageUriString.toUri()
             noteImageView.setImageURI(imageUri)
             noteImageView.visibility = ImageView.VISIBLE
-            Log.d("NoteDetails", "Setting image with URI: $imageUri")
         } else {
             noteImageView.visibility = ImageView.GONE
-            Log.d("NoteDetails", "Image URI is empty or null")
         }
     }
 
