@@ -61,5 +61,4 @@ dependencies {
     implementation("androidx.room:room-ktx:$roomVersion")
 
     implementation("androidx.dynamicanimation:dynamicanimation:1.0.0")
-
 }

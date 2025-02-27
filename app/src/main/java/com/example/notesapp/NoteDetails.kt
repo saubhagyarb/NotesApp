@@ -2,14 +2,18 @@ package com.example.notesapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import com.example.notesapp.data.Note
 import com.example.notesapp.data.NoteViewModel
 import com.example.notesapp.data.ViewModelFactory
+import kotlin.math.log
 
 class NoteDetails : AppCompatActivity() {
 
@@ -18,6 +22,7 @@ class NoteDetails : AppCompatActivity() {
     private lateinit var backButton: ImageButton
     private lateinit var editButton: ImageButton
     private lateinit var deleteButton: ImageButton
+    private lateinit var noteImageView: ImageView
 
     private val noteViewModel: NoteViewModel by viewModels {
         ViewModelFactory(application)
@@ -38,6 +43,7 @@ class NoteDetails : AppCompatActivity() {
         backButton = findViewById(R.id.backButton)
         editButton = findViewById(R.id.editButton)
         deleteButton = findViewById(R.id.deleteButton)
+        noteImageView = findViewById(R.id.noteImageView)
     }
 
     private fun setupListeners() {
@@ -80,5 +86,19 @@ class NoteDetails : AppCompatActivity() {
     private fun displayNoteDetails() {
         titleText.text = intent.getStringExtra("note_title")
         reviewText.text = intent.getStringExtra("note_content")
+
+        val imageUriString = intent.getStringExtra("note_image_uri")
+        Log.d("NoteDetails", "Image URI: $imageUriString")
+
+        if (!imageUriString.isNullOrEmpty()) {
+            val imageUri = imageUriString.toUri()
+            noteImageView.setImageURI(imageUri)
+            noteImageView.visibility = ImageView.VISIBLE
+            Log.d("NoteDetails", "Setting image with URI: $imageUri")
+        } else {
+            noteImageView.visibility = ImageView.GONE
+            Log.d("NoteDetails", "Image URI is empty or null")
+        }
     }
+
 }
