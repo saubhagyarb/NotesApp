@@ -104,11 +104,20 @@ class AddNote : AppCompatActivity() {
     }
 
     private fun removeImage() {
+        selectedImageUri?.let { uri ->
+            // Delete the image file from private storage if it exists
+            val deleted = deleteFromPrivateStorage(uri.toString())
+            if (!deleted) {
+                Log.e("RemoveImage", "Failed to delete image: $uri")
+            }
+            else Log.d("RemoveImage", "Image deleted successfully: $uri")
+        }
         selectedImageUri = null
         selectedImageView.setImageURI(null)
         selectedImageView.visibility = View.GONE
         removeImageButton.visibility = View.GONE
     }
+
 
     private fun showSaveDialog() {
         val title = titleTextInputEditText.text.toString().trim()
@@ -165,6 +174,23 @@ class AddNote : AppCompatActivity() {
         } catch (e: Exception) {
             Log.e("SaveImage", "Error saving image", e)
             null
+        }
+    }
+
+    private fun deleteFromPrivateStorage(uriString: String): Boolean {
+        return try {
+            val uri = Uri.parse(uriString)
+            val file = File(uri.path ?: return false)
+
+            if (file.exists()) {
+                file.delete()
+            } else {
+                Log.e("DeleteImage", "File not found: $uriString")
+                false
+            }
+        } catch (e: Exception) {
+            Log.e("DeleteImage", "Error deleting image", e)
+            false
         }
     }
 
