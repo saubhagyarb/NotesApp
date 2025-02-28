@@ -140,12 +140,12 @@
     <color name="md_theme_surfaceContainer_highContrast">#E2E2E2</color>
     <color name="md_theme_surfaceContainerHigh_highContrast">#D4D4D4</color>
     <color name="md_theme_surfaceContainerHighest_highContrast">#C6C6C6</color>
-    <color name="note_color_1">#FFAB91</color> <!-- Deep Orange 200 -->
-    <color name="note_color_2">#F48FB1</color> <!-- Pink 200 -->
-    <color name="note_color_3">#81D4FA</color> <!-- Light Blue 200 -->
-    <color name="note_color_4">#A5D6A7</color> <!-- Green 200 -->
-    <color name="note_color_5">#FFF59D</color> <!-- Yellow 200 -->
-    <color name="note_color_6">#B39DDB</color> <!-- Deep Purple 200 -->
-    <color name="note_color_7">#90CAF9</color> <!-- Blue 200 -->
-    <color name="note_color_8">#80CBC4</color> <!-- Teal 200 -->
+    <color name="note_color_1">#FFAB91</color>
+    <color name="note_color_2">#F48FB1</color>
+    <color name="note_color_3">#81D4FA</color>
+    <color name="note_color_4">#A5D6A7</color>
+    <color name="note_color_5">#FFF59D</color>
+    <color name="note_color_6">#B39DDB</color>
+    <color name="note_color_7">#90CAF9</color>
+    <color name="note_color_8">#80CBC4</color>
 </resources>
