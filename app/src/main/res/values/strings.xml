@@ -5,7 +5,7 @@
     <string name="search_notes">Search notes</string>
     <string name="your_notes">Your notes</string>
     <string name="add_button">Add</string>
-    <string name="back_button">Back button</string>
+    <string name="back">Back</string>
     <string name="delete">Delete</string>
     <string name="Book_review">Book Review : The Design of Everyday Things by Don Norman</string>
     <string name="save">save</string>

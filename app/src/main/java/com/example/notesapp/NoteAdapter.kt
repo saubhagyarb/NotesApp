@@ -25,10 +25,10 @@ class NoteAdapter(private val onItemClick: (Note) -> Unit) :
         R.color.note_color_8
     )
 
-    inner class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val titleTextView: TextView = itemView.findViewById(R.id.title)
-        private val contentTextView: TextView = itemView.findViewById(R.id.content)
-        private val noteBackground: LinearLayout = itemView.findViewById(R.id.note_background)
+    inner class NoteViewHolder(noteItemView: View) : RecyclerView.ViewHolder(noteItemView) {
+        private val titleTextView: TextView = noteItemView.findViewById(R.id.title)
+        private val contentTextView: TextView = noteItemView.findViewById(R.id.content)
+        private val noteBackground: LinearLayout = noteItemView.findViewById(R.id.note_background)
 
         fun bind(note: Note) {
             titleTextView.text = note.title
