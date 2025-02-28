@@ -1,122 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
 <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/add_note"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="20dp">
+    android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/back"
-        android:contentDescription="@string/back_button"
-        app:tint="@color/md_theme_onBackground"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/saveButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/save"
-        android:contentDescription="@string/save"
-        app:tint="@color/md_theme_onBackground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/titleInputLayout"
-        android:layout_width="0dp"
+    <!-- Fixed (Unscrollable) Top Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:boxStrokeColor="@color/md_theme_primary"
-        app:hintEnabled="true"
-        app:boxBackgroundMode="none"
-        app:layout_constraintTop_toBottomOf="@id/backButton"
-        app:layout_constraintStart_toStartOf="parent"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/titleInput"
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/back_button"
+            android:src="@drawable/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/md_theme_onBackground" />
+
+        <ImageButton
+            android:id="@+id/saveButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/save"
+            android:src="@drawable/save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/md_theme_onBackground" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/add_note"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/title"
-            android:textSize="18sp"
-            android:textColor="@color/md_theme_onBackground"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:padding="20dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/reviewInputLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:boxStrokeColor="@color/md_theme_primary"
-        app:hintEnabled="true"
-        app:boxBackgroundMode="none"
-        app:layout_constraintTop_toBottomOf="@id/titleInputLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/titleInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/md_theme_primary"
+                app:hintEnabled="true"
+                app:boxBackgroundMode="none"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/noteInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:hint="@string/note"
-            android:inputType="textMultiLine"
-            android:textSize="16sp"
-            android:keepScreenOn="true"
-            android:textColor="@color/md_theme_onBackground"/>
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/titleInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/title"
+                    android:textSize="18sp"
+                    android:textColor="@color/md_theme_onBackground"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageButton
-        android:id="@+id/addImageButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/add_image"
-        android:contentDescription="@string/add_image"
-        app:tint="@color/md_theme_onBackground"
-        app:layout_constraintTop_toBottomOf="@id/reviewInputLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/reviewInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/md_theme_primary"
+                app:hintEnabled="true"
+                app:boxBackgroundMode="none"
+                app:layout_constraintTop_toBottomOf="@id/titleInputLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp">
 
-    <ImageButton
-        android:id="@+id/removeImageButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/close"
-        android:contentDescription="@string/remove_image"
-        app:tint="@color/md_theme_error"
-        app:layout_constraintTop_toTopOf="@id/addImageButton"
-        app:layout_constraintStart_toEndOf="@id/addImageButton"
-        android:layout_marginStart="8dp"
-        android:visibility="gone" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/noteInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:hint="@string/note"
+                    android:inputType="textMultiLine"
+                    android:textSize="16sp"
+                    android:keepScreenOn="true"
+                    android:textColor="@color/md_theme_onBackground"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
-        android:id="@+id/selectedImageView"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:contentDescription="@string/selected_image"
-        android:scaleType="centerInside"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/addImageButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+            <ImageButton
+                android:id="@+id/addImageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/add_image"
+                android:contentDescription="@string/add_image"
+                app:tint="@color/md_theme_onBackground"
+                app:layout_constraintTop_toBottomOf="@id/reviewInputLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp" />
 
+            <ImageButton
+                android:id="@+id/removeImageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/close"
+                android:contentDescription="@string/remove_image"
+                app:tint="@color/md_theme_error"
+                app:layout_constraintTop_toTopOf="@id/addImageButton"
+                app:layout_constraintStart_toEndOf="@id/addImageButton"
+                android:layout_marginStart="8dp"
+                android:visibility="gone" />
 
+            <ImageView
+                android:id="@+id/selectedImageView"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:contentDescription="@string/selected_image"
+                android:scaleType="centerInside"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/addImageButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
+    <!-- Fixed (Unscrollable) Header -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/note_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:padding="10dp">
 
         <ImageButton
             android:id="@+id/backButton"
@@ -46,43 +45,59 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginEnd="8dp" />
 
-        <TextView
-            android:id="@+id/titleText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/Book_review"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/backButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
-            android:autoLink="all" />
-
-        <TextView
-            android:id="@+id/reviewText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/the_design_of_everyday"
-            android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@id/titleText"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
-            android:autoLink="all" />
-
-        <ImageView
-            android:id="@+id/noteImageView"
-            android:layout_width="400dp"
-            android:layout_height="400dp"
-            android:contentDescription="@string/image_that_was_selected"
-            android:scaleType="centerInside"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/reviewText"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/Book_review"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                android:autoLink="all" />
+
+            <TextView
+                android:id="@+id/reviewText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/the_design_of_everyday"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/titleText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                android:autoLink="all" />
+
+            <ImageView
+                android:id="@+id/noteImageView"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:contentDescription="@string/image_that_was_selected"
+                android:scaleType="centerInside"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/reviewText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</LinearLayout>
