@@ -33,32 +33,21 @@
         android:layout_marginEnd="8dp" />
 
     <!-- Empty State Layout -->
-    <LinearLayout
+    <TextView
         android:id="@+id/emptyStateLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:visibility="gone"
+        android:text="@string/notes_you_add_appear_here"
+        android:textSize="18sp"
+        android:textColor="@color/md_theme_onBackground"
+        android:drawablePadding="16dp"
+        android:contentDescription="@string/empty_state_icon"
+        app:drawableTint="@color/md_theme_onBackground"
+        app:drawableTopCompat="@drawable/lightbulb"
         app:layout_constraintTop_toBottomOf="@id/titleText"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/lightbulb"
-            app:tint="@color/md_theme_onBackground"
-            android:contentDescription="@string/empty_state_icon"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/notes_you_add_appear_here"
-            android:textSize="18sp"
-            android:textColor="@color/md_theme_onBackground"
-            android:layout_marginTop="16dp"/>
-
-    </LinearLayout>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -74,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@id/titleText"
         app:layout_constraintVertical_bias="1.0"
         tools:listitem="@layout/note_item"
-        />
+    />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_button"

@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
-import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var addButton: FloatingActionButton
     private lateinit var searchButton: ImageButton
-    private lateinit var emptyStateLayout: LinearLayout
+    private lateinit var emptyStateLayout: TextView
 
 
     private val noteViewModel: NoteViewModel by viewModels {
