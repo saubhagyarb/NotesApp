@@ -33,9 +33,9 @@ class NoteAdapter(private val onItemClick: (Note) -> Unit) :
         fun bind(note: Note) {
             titleTextView.text = note.title
             contentTextView.text = note.content
-
-            noteBackground.setBackgroundColor(itemView.context.getColor(noteColors[Random.nextInt(1, 8)]))
-
+            noteBackground.setBackgroundColor(
+                itemView.context.getColor(noteColors[Random.nextInt(1, 8)])
+            )
             itemView.setOnClickListener { onItemClick(note) }
         }
     }

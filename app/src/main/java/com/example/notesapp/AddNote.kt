@@ -13,6 +13,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.notesapp.data.Note
 import com.example.notesapp.data.NoteViewModel
 import com.example.notesapp.data.ViewModelFactory
@@ -53,6 +55,11 @@ class AddNote : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_note)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.add)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         mContext = this
         noteId = intent.getIntExtra("note_id", -1)
