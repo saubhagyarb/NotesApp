@@ -1,10 +1,21 @@
-# NotesApp
-Welcome to NotesApp, a Kotlin-based application designed to help you manage your notes efficiently.
-## Features
+# Notes App - Android Kotlin
+This is a feature-rich Android notes application built with Kotlin that allows users to create, edit, search, and manage their notes with image attachments.
 
-- Manage and organize your notes
-- Simple and intuitive user interface
-- Built with 100% Kotlin
+# Features
+- Create and Edit Notes: Add new notes with title, content, and optional image attachments.
+- Image Support: Attach images to notes from device storage.
+- Note Management: Edit and delete existing notes.
+- Search Functionality: Search through notes to quickly find content.
+- Visual Appeal: Notes displayed with randomized color backgrounds for visual distinction.
+- Smooth Animations: Spring animations when adding new notes for a polished user experience.
+- Data Persistence: Notes stored locally using Android Architecture Components
+
+# Technical Implementation
+- Built with Kotlin and follows modern Android development practices.
+- Implements MVVM architecture pattern with ViewModel and LiveData.
+- Uses RecyclerView with ListAdapter for efficient list rendering.
+- Includes custom animations for a fluid user experience.
+- Proper file management for storing and deleting images.
 
 # Screenshots
 <table>
