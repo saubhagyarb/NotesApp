@@ -1,3 +1,11 @@
+# NotesApp
+Welcome to NotesApp, a Kotlin-based application designed to help you manage your notes efficiently.
+## Features
+
+- Manage and organize your notes
+- Simple and intuitive user interface
+- Built with 100% Kotlin
+
 # Screenshots
 <table>
   <tr>
