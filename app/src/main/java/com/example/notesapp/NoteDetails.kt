@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.notesapp.data.Note
 import com.example.notesapp.data.NoteViewModel
 import com.example.notesapp.data.ViewModelFactory
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.File
 
 class NoteDetails : AppCompatActivity() {
@@ -72,7 +73,7 @@ class NoteDetails : AppCompatActivity() {
     }
 
     private fun showDeleteDialog() {
-        AlertDialog.Builder(this)
+        MaterialAlertDialogBuilder(this)
             .setTitle("Delete Note")
             .setMessage("Are you sure you want to delete this note?")
             .setPositiveButton("Yes") { dialog, _ ->

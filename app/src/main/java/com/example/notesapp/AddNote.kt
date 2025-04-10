@@ -21,6 +21,8 @@ import com.example.notesapp.data.ViewModelFactory
 import com.google.android.material.textfield.TextInputEditText
 import java.io.File
 import java.io.FileOutputStream
+import androidx.core.net.toUri
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class AddNote : AppCompatActivity() {
 
@@ -94,7 +96,7 @@ class AddNote : AppCompatActivity() {
                     noteInputEditText.setText(it.content)
 
                     if (!it.imageUri.isNullOrEmpty()) {
-                        selectedImageUri = Uri.parse(it.imageUri)
+                        selectedImageUri = it.imageUri.toUri()
                         displaySelectedImage()
                     }
                 }
@@ -135,7 +137,7 @@ class AddNote : AppCompatActivity() {
             return
         }
 
-        AlertDialog.Builder(mContext)
+        MaterialAlertDialogBuilder(mContext)
             .setTitle("Save Note")
             .setMessage("Do you want to save this note?")
             .setPositiveButton("Yes") { dialog, _ ->
