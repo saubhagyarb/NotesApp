@@ -25,7 +25,7 @@ This is a feature-rich Android notes application built with Kotlin that allows u
   </tr>
   <tr>
     <td style="padding: 50px;"><img src="https://github.com/user-attachments/assets/aa74a6fd-3e04-46ad-9c09-ef7c826bf439" alt="SS3" width="400"/></td>
-    <td style="padding: 50px;"><img src="https://github.com/user-attachments/assets/4fd011d0-8a3a-42cb-b5fb-62ecb8ae2152" alt="SS4" width="400"/></td>
+    <td style="padding: 50px;"><img src="https://github.com/user-attachments/assets/b66206d2-c0d8-4f8d-ab95-020e5566722f" alt="SS4" width="400"/></td>
   </tr>
   <tr>
     <td style="padding: 50px;"><img src="https://github.com/user-attachments/assets/4ac50e89-6569-4088-816e-4cc3a11dbaf6" alt="SS5" width="400"/></td>
@@ -33,6 +33,6 @@ This is a feature-rich Android notes application built with Kotlin that allows u
   </tr>
   <tr>
     <td style="padding: 50px;"><img src="https://github.com/user-attachments/assets/3a469fe5-30c6-4730-a45c-c2ecda64346b" alt="SS7" width="400"/></td>
-    <td style="padding: 50px;"><img src="https://github.com/user-attachments/assets/9f987eeb-ea27-4d59-b66c-c70927f77e98" alt="SS8" width="400"/></td>
   </tr>
 </table>
+
